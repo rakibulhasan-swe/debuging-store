@@ -14,7 +14,7 @@ const showProducts = (products) => {
     div.classList.add("product");
     div.innerHTML = `<div class="single-product shadow-lg p-3 mb-5 bg-body rounded">
       <div>
-    <img class="product-image" src=${image}></img>
+      <img class="product-image" src=${image}></img>
       </div>
       <h3 class="fs-5">${product.title}</h3>
       <p class="fs-6">Category: ${product.category}</p>
@@ -26,6 +26,7 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
+// update how many product added
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
@@ -37,11 +38,11 @@ const addToCart = (id, price) => {
 
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
-  const converted = parseInt(element);
+  const converted = parseFloat(element);
   return converted;
 };
 
-// main price update function
+// update main price
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
@@ -71,7 +72,7 @@ const updateTaxAndCharge = () => {
   }
 };
 
-//grandTotal update function
+//update grand total value
 const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
